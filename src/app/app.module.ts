@@ -5,6 +5,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatCardModule } from "@angular/material/card";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -18,12 +19,14 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component'
 
-import {DishService} from './services/dish.service';
-import {PromotionService} from './services/promotion.service';
- 
+import { DishService } from './services/dish.service';
+import { PromotionService } from './services/promotion.service';
+import { LeaderService } from './services/leader.service';
+
 import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { LoginComponent } from './login/login.component';
 @NgModule({
-  declarations: [AppComponent, MenuComponent, DishdetailComponent, HeaderComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent],
+  declarations: [AppComponent, MenuComponent, DishdetailComponent, HeaderComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -33,9 +36,11 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
     MatCardModule,
     MatButtonModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
   ],
-  providers: [DishService,PromotionService],
+  entryComponents: [LoginComponent],
+  providers: [DishService, PromotionService, LeaderService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
