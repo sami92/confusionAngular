@@ -9,7 +9,8 @@
 >
   <div fxFlex="40">
     <mat-card *ngIf="dish">
-      <mat-card-title>{{ dish.name | uppercase }}</mat-card-title>
+      <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
+      <!-- <mat-card-title>{{ dish.name | uppercase }}</mat-card-title> -->
       <mat-card-content
         ><img height="200px" src="{{ dish.image }}" alt="{{ dish.name }}"
       /></mat-card-content>
