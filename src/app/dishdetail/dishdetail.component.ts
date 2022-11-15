@@ -16,6 +16,7 @@ import { Comment } from '../shared/comment';
 export class DishdetailComponent implements OnInit {
   commentForm: FormGroup;
   comment: Comment;
+  errMess:string;
   dish: Dish;
   dishIds: string[];
   prev: string;
@@ -49,10 +50,12 @@ export class DishdetailComponent implements OnInit {
     @Inject("BaseURL") private baseURL) { }
 
   ngOnInit() {
+    this.createForm()
     this.dishServcie.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params.pipe(switchMap((params: Params) => this.dishServcie.getDish(params['id'])))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
-    this.createForm()
+      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
+      errmess => this.errMess = <any>errmess);
+    
   }
   goBack(): void {
     this.location.back();

@@ -40,7 +40,7 @@
         </div>
       </mat-list-item>
     </mat-list>
-    
+
     <div>
       <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
         <p>
@@ -59,14 +59,19 @@
             <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
           </mat-form-field>
         </p>
-        <button  type="submit" mat-button class="background-primary text-floral-white"
+        <button type="submit" mat-button class="background-primary text-floral-white"
           [disabled]="!commentForm.valid">Submit</button>
       </form>
     </div>
-  </div>
 
-</div>
-<div [hidden]="dish">
-  <mat-spinner></mat-spinner>
-  <h4>Loading . . . Please Wait</h4>
+
+  </div>
+  <div [hidden]="dish || errMess">
+    <mat-spinner></mat-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
 </div>
